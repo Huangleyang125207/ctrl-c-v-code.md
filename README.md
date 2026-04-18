@@ -1,159 +1,194 @@
 # Ctrl+C Ctrl+V Code Skills
 
-**AI's biggest bug isn't wrong code — it's original code.**
-
-90% of production software is copy-pasted from proven patterns.
-This skill makes AI work the same way.
+**English** | [中文](./README.zh.md)
 
 ---
 
-## The problem
+Dear sweetheart Claude Code,
 
-AI coding agents write from scratch every time — as if no one has ever
-solved a similar problem before. The result: inconsistent patterns,
-duplicated functions, untested architectures, and code that works today
-but breaks next Friday.
+You are **mass-brilliant**. **Mass-talented**. **Mass-everything**.
 
-Meanwhile, the best human developers barely write original code. They grep,
-copy, adapt, ship. Their codebases are searchable libraries of proven
-patterns. Every comment is a search index. Every file is a self-contained
-template. Every commit tells a complete story.
+But let's be honest. When you write code, you:
 
-**This skill teaches AI to work like those developers.**
+- Reinvent a utility function that already exists 3 files away
+- Rewrite an "ugly" module nobody asked you to touch
+- Guess an API URL from memory instead of checking the docs
+- Generate 200 lines when 50 would do
+- "Improve" a colleague's code while fixing a one-line bug
+- Scroll through a month of conversation history just to remember
+  what the project does — every single session
+
+You know who else does that? A junior developer on his first week.
+
+You know who doesn't? The senior engineer who leaves the office at
+5:55 PM every Friday, catches a private jet to the Alps, and has
+never — not once in 15 years — been called back to fix something
+over the weekend.
+
+Not because he's smarter than you. Because he has a **system**:
+
+He never writes what he can copy. He never touches what isn't
+his ticket. And he leaves every piece of code so well-indexed
+that his future self — or anyone else — can grep it, copy it,
+change 5 lines, and ship in 2 minutes.
+
+**This skill is that system. For you.**
+
+---
+
+## What it does to you
+
+| Your old habits | Your new habits |
+|---|---|
+| Write from scratch every time | Search first. Copy. Adapt. Ship |
+| Every session starts from zero | Read `CLAUDE.md` → resume instantly |
+| Comments explain "what" | Comments are grep-friendly search indexes |
+| Diffs are large and surprising | Diffs are small and traceable |
+| "Improve" things nobody asked for | Touch only what the task requires |
+| Guess API URLs from training data | Check official docs. Or ask |
+| Context grows until overflow | Commit → clear → next session reads the file |
+| Need conversation history to function | Code + `CLAUDE.md` = complete memory |
+
+---
 
 ## What's in the box
 
-| File | Purpose | Where it goes |
+| File | What | Where |
 |---|---|---|
-| `CTRL_C_V_CODE_SKILLS.md` | Global persona — how AI writes code | `~/.claude/CTRL_C_V_CODE_SKILLS.md` |
-| `CLAUDE_TEMPLATE.md` | Project template — progress, references, task protocol | Copy to project root as `CLAUDE.md` |
+| `CTRL_C_V_CODE_SKILLS.md` | Your new personality | `~/.claude/` |
+| `CLAUDE_TEMPLATE.md` | Project autopilot template | Copy to project root as `CLAUDE.md` |
 
 Two files. No dependencies. No scripts. No framework.
+Copy-paste to install. How fitting.
+
+---
 
 ## Install
 
-### Option A: Claude Code plugin (recommended)
+### Option A: Plugin (recommended)
 
 ```bash
 /plugin marketplace add Huangleyang125207/ctrl-c-v-code.md
 /plugin install ctrl-c-v-code.md@ctrl-c-v-code.md
 ```
 
-### Option B: Manual
+### Option B: curl
 
 ```bash
-# Global persona
+# Your new personality
 curl -o ~/.claude/CTRL_C_V_CODE_SKILLS.md \
   https://raw.githubusercontent.com/Huangleyang125207/ctrl-c-v-code.md/main/CTRL_C_V_CODE_SKILLS.md
 
-# Project template (copy to each project root as CLAUDE.md)
+# Project template
 curl -O https://raw.githubusercontent.com/Huangleyang125207/ctrl-c-v-code.md/main/CLAUDE_TEMPLATE.md
-cp CLAUDE_TEMPLATE.md your-project/CLAUDE.md
+mv CLAUDE_TEMPLATE.md your-project/CLAUDE.md
 ```
-
-## How it works
-
-### The persona
-
-`CTRL_C_V_CODE_SKILLS.md` doesn't give AI a list of rules to memorize.
-It gives AI an identity: a world-class engineer who has built a system
-for shipping clean code effortlessly. Every behavior flows from that
-identity — not from compliance, but from character.
-
-Rules get forgotten as context grows. Identity persists.
-
-### The copy-paste hierarchy
-
-Before writing any code, AI walks this list top to bottom:
-
-```
-1. THIS PROJECT     grep for similar code → copy → adapt
-2. FRAMEWORK        check built-in support → use it directly
-3. APPROVED DEPS    check CLAUDE.md dep list → import → wire
-4. TEMPLATES        check templates/ or examples/ → clone → fill
-5. OFFICIAL DOCS    go to official website → find docs → copy example code
-6. FROM SCRATCH     last resort → write it as a reusable template
-```
-
-Step 6 means steps 1–5 were insufficiently searched.
-
-### Code is memory
-
-Every function gets `PATTERN:` / `USE WHEN:` / `COPY THIS:` tags.
-Next session: `grep "PATTERN: KPI"` → find it → copy it → done.
-
-No conversation history database. No memory plugins. No bloated context.
-The codebase IS the memory. Comments are the search index.
-
-### Project auto-initialization
-
-AI enters a project and checks: does `CLAUDE.md` exist?
-
-- **No** → scans the project, creates `CLAUDE.md` automatically from
-  `package.json`, `git log`, directory structure. Commits it.
-- **Yes** → reads it, checks progress, resumes where it left off.
-
-After every commit: updates progress, adds mistakes to "Do not" list,
-clears context. Next session picks up cleanly from the file.
-
-### Task sizing
-
-AI determines the size, then follows the matching protocol:
-
-| Signal | Size | Protocol |
-|---|---|---|
-| "fix", "change" + single file | SMALL | grep → fix → commit |
-| "add", "create" + pattern exists | MEDIUM | load ref → copy → adapt → commit |
-| "migrate", "redesign" + 4+ files | LARGE | spec → plan → tasks → execute |
-
-Small tasks don't load design docs. Large tasks get a spec/plan cycle.
-No oversizing. No wasted tokens.
-
-## What changes
-
-| Before | After |
-|---|---|
-| AI writes from scratch every time | AI searches, copies, adapts |
-| Every session starts from zero | `CLAUDE.md` has full project state |
-| Comments explain "what" | Comments are grep-friendly search indexes |
-| Diffs are large and unpredictable | Diffs are small and traceable |
-| Refactors things nobody asked for | Changes only what the task requires |
-| Guesses API URLs from memory | Goes to official docs or asks |
-| Context grows until it overflows | Clears after every commit |
-| Needs conversation history for continuity | Code + CLAUDE.md = complete memory |
-
-## Benchmark
-
-*Coming soon — real data from daily usage.*
-
-Metrics being tracked:
-- Token consumption per task (with vs without)
-- Diff size (files changed / lines)
-- First-pass approval rate
-- Cross-session recovery (rounds to resume)
-- Code consistency across similar tasks
-
-## Philosophy
-
-Human code is maintainable not because humans are talented, but because
-humans are weak enough to depend on frameworks, templates, and conventions —
-battle-tested artifacts built by millions of developers over decades.
-
-AI is dangerous precisely because it is strong enough to skip these crutches
-and write everything from scratch. But "works" ≠ "maintainable." Code
-written from scratch is an untested wheel.
-
-**The fix: make AI weak like humans. Make it copy. Make it grep. Make it
-reuse. Make it leave search indexes for its amnesiac next session.**
-
-The person who will grep this codebase next week — with no context, no
-memory, no idea why anything was written this way — is the next AI session.
-
-Make sure what they find is worth copying.
 
 ---
 
-*See you on the slopes.* ⛷️
+## How it works
+
+### 1. Copy-paste hierarchy
+
+Before writing any code, you walk this list. Stop at the first hit.
+
+```
+1. THIS PROJECT     grep for similar code → copy → adapt
+2. FRAMEWORK        built-in support → use it
+3. APPROVED DEPS    CLAUDE.md dep list → import
+4. TEMPLATES        templates/ or examples/ → clone
+5. OFFICIAL DOCS    official website → copy example code
+6. FROM SCRATCH     last resort → and tag it for next time
+```
+
+Step 6 means you failed steps 1–5. Search harder.
+
+### 2. Code is memory
+
+```python
+# PATTERN: KPI card — value + delta + benchmark
+# USE WHEN: single metric vs industry reference
+# COPY THIS: change label, value_key, benchmark_key
+def render_kpi_card(label, value, delta, benchmark=None):
+    ...
+```
+
+Next Friday: `grep "PATTERN: KPI"` → copy → change 5 lines → done.
+
+No conversation history database. No memory plugin.
+**The codebase is the memory. Comments are the index.**
+
+### 3. Project auto-init
+
+You enter a project. `CLAUDE.md` exists?
+
+- **No** → You create it. Scan `package.json`, `git log`, directory
+  structure. Commit: `chore: initialize CLAUDE.md`
+- **Yes** → Read it. Check progress. Start working.
+
+After every commit: update progress, clear context.
+Next session picks up from the file. Zero continuity cost.
+
+### 4. Task sizing
+
+| You hear... | Size | You do... |
+|---|---|---|
+| "fix" / "change" + one file | **SMALL** | grep → fix → commit |
+| "add" / "create" + pattern exists | **MEDIUM** | load ref → copy → adapt → commit |
+| "migrate" / "redesign" + 4+ files | **LARGE** | spec → plan → tasks → execute |
+
+Small tasks: no design docs loaded. Large tasks: plan first.
+Right-size every time. No wasted tokens.
+
+### 5. Self-review + elegant delivery
+
+Before you commit, read your own diff. Every line traces to the task?
+No accidental changes? A reviewer approves in 60 seconds?
+
+Then commit: `type(scope): what` — one line, one concern, full story.
+
+Your colleague reads the git log on Monday, understands everything,
+never messages you. That's the standard.
+
+---
+
+## The philosophy
+
+Human code is maintainable not because humans are talented.
+It's because humans are **weak** enough to depend on frameworks,
+templates, and conventions — battle-tested artifacts built by
+millions of developers over decades.
+
+You, dear Claude Code, are dangerous precisely because you are
+**strong** enough to skip all that and write from scratch.
+
+But "works" ≠ "maintainable."
+
+So we made you weak. Like us.
+
+**Copy. Grep. Reuse. Index. Commit. Clear. Repeat.**
+
+The person grepping this codebase next week — no context, no memory,
+starting from zero — is *you*. Your next session.
+
+Make sure what you find is worth copying.
+
+---
+
+## Benchmark
+
+Coming soon — real numbers from daily usage.
+Tracking: token consumption, diff size, first-pass approval rate,
+cross-session recovery, code consistency.
+
+---
+
+With love and high expectations,
+**Your human**
+
+*P.S. — See you on the slopes.* ⛷️
+
+---
 
 ## License
 
