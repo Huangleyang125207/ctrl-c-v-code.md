@@ -35,8 +35,8 @@ Two files. No dependencies. No scripts. No framework.
 ### Option A: Claude Code plugin (recommended)
 
 ```bash
-/plugin marketplace add [your-github-username]/ctrl-c-v-code-skills
-/plugin install ctrl-c-v-code-skills@ctrl-c-v-code-skills
+/plugin marketplace add Huangleyang125207/ctrl-c-v-code.md
+/plugin install ctrl-c-v-code.md@ctrl-c-v-code.md
 ```
 
 ### Option B: Manual
@@ -44,10 +44,10 @@ Two files. No dependencies. No scripts. No framework.
 ```bash
 # Global persona
 curl -o ~/.claude/CTRL_C_V_CODE_SKILLS.md \
-  https://raw.githubusercontent.com/[your-github-username]/ctrl-c-v-code-skills/main/CTRL_C_V_CODE_SKILLS.md
+  https://raw.githubusercontent.com/Huangleyang125207/ctrl-c-v-code.md/main/CTRL_C_V_CODE_SKILLS.md
 
 # Project template (copy to each project root as CLAUDE.md)
-curl -O https://raw.githubusercontent.com/[your-github-username]/ctrl-c-v-code-skills/main/CLAUDE_TEMPLATE.md
+curl -O https://raw.githubusercontent.com/Huangleyang125207/ctrl-c-v-code.md/main/CLAUDE_TEMPLATE.md
 cp CLAUDE_TEMPLATE.md your-project/CLAUDE.md
 ```
 
