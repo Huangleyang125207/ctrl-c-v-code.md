@@ -81,9 +81,9 @@ most ~250 lines of instructions, not a 1000-line knowledge dump.
 
 ```
 SKILL.md (always loaded) — "how to think"
-  ↓ @playbooks/search.md  → loaded when searching
-  ↓ @playbooks/commit.md  → loaded when committing
-  ↓ ...                    → loaded, used, forgotten
+  ↓ @skills/ctrl-c-v/playbooks/search.md  → loaded when searching
+  ↓ @skills/ctrl-c-v/playbooks/commit.md  → loaded when committing
+  ↓ ...                                    → loaded, used, forgotten
 ```
 
 ### 5. Commit-and-clear cycle (not context accumulation)

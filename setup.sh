@@ -20,19 +20,8 @@ else
   echo "  · ~/.claude/patterns/INDEX.md already exists"
 fi
 
-# Playbooks directory (if manual install, copy from repo)
-if [ ! -d ~/.claude/playbooks ]; then
-  SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-  if [ -d "$SCRIPT_DIR/playbooks" ]; then
-    cp -r "$SCRIPT_DIR/playbooks" ~/.claude/playbooks
-    echo "  ✓ Copied playbooks to ~/.claude/playbooks/"
-  else
-    mkdir -p ~/.claude/playbooks
-    echo "  ✓ Created ~/.claude/playbooks/ (empty — populate from repo)"
-  fi
-else
-  echo "  · ~/.claude/playbooks/ already exists"
-fi
+# Playbooks travel with the skill (skills/ctrl-c-v/playbooks/).
+# No separate copy needed — SKILL.md references them via ${CLAUDE_SKILL_DIR}/playbooks/.
 
 echo ""
 echo "Done. To set up a project, copy the template:"
