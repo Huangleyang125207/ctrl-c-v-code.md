@@ -97,7 +97,7 @@ spec/plan 全程。每次都用对的颗粒度。不浪费 token。
 
 ```bash
 /plugin marketplace add Huangleyang125207/ctrl-c-v-code-skills
-/plugin install ctrl-c-v-code-skills@ctrl-c-v-code-skills
+/plugin install ctrl-c-v-code-skills@Huangleyang125207-ctrl-c-v-code-skills
 bash ~/.claude/plugins/marketplaces/ctrl-c-v-code-skills/setup.sh
 cp ~/.claude/plugins/marketplaces/ctrl-c-v-code-skills/templates/CLAUDE_TEMPLATE.md ./CLAUDE.md
 ```
@@ -108,7 +108,6 @@ cp ~/.claude/plugins/marketplaces/ctrl-c-v-code-skills/templates/CLAUDE_TEMPLATE
 git clone https://github.com/Huangleyang125207/ctrl-c-v-code-skills.git
 cd ctrl-c-v-code-skills && bash setup.sh
 cp -r skills/ctrl-c-v ~/.claude/skills/
-cp -r playbooks ~/.claude/playbooks
 cp templates/CLAUDE_TEMPLATE.md your-project/CLAUDE.md
 ```
 

@@ -128,18 +128,20 @@ cycle. Right-size every time. No wasted tokens.
 ```
 ctrl-c-v-code-skills/
 ├── .claude-plugin/              Plugin manifest (CC auto-discovers)
-├── skills/ctrl-c-v/SKILL.md     Your new personality (~180 lines)
-├── playbooks/                   8 detail guides (loaded on demand)
-│   ├── search.md                  search protocol + tag vocabulary
-│   ├── index.md                   pattern indexing + naming rules
-│   ├── copy.md                    replication method
-│   ├── scope.md                   scope control + stop signals
-│   ├── scratch.md                 from-scratch rules + save tax
-│   ├── review.md                  self-review checklist
-│   ├── commit.md                  commit/PR conventions
-│   └── collab.md                  collaboration standards
+├── skills/
+│   └── ctrl-c-v/
+│       ├── SKILL.md             Your new personality (~180 lines)
+│       └── playbooks/           8 detail guides (loaded on demand)
+│           ├── search.md          search protocol + tag vocabulary
+│           ├── index.md           pattern indexing + naming rules
+│           ├── copy.md            replication method
+│           ├── scope.md           scope control + stop signals
+│           ├── scratch.md         from-scratch rules + save tax
+│           ├── review.md          self-review checklist
+│           ├── commit.md          commit/PR conventions
+│           └── collab.md          collaboration standards
 ├── templates/
-│   └── CLAUDE_TEMPLATE.md       Project autopilot (~140 lines)
+│   └── CLAUDE_TEMPLATE.md       Project autopilot (user copies manually)
 ├── setup.sh                     Creates ~/.claude/patterns/ structure
 └── README.md
 ```
@@ -150,7 +152,7 @@ ctrl-c-v-code-skills/
 
 ```bash
 /plugin marketplace add Huangleyang125207/ctrl-c-v-code-skills
-/plugin install ctrl-c-v-code-skills@ctrl-c-v-code-skills
+/plugin install ctrl-c-v-code-skills@Huangleyang125207-ctrl-c-v-code-skills
 ```
 
 Then run setup and copy the project template:
@@ -166,7 +168,6 @@ cp ~/.claude/plugins/marketplaces/ctrl-c-v-code-skills/templates/CLAUDE_TEMPLATE
 git clone https://github.com/Huangleyang125207/ctrl-c-v-code-skills.git
 cd ctrl-c-v-code-skills && bash setup.sh
 cp -r skills/ctrl-c-v ~/.claude/skills/
-cp -r playbooks ~/.claude/playbooks
 cp templates/CLAUDE_TEMPLATE.md your-project/CLAUDE.md
 ```
 

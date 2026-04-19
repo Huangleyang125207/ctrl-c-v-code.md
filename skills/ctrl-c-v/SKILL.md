@@ -65,7 +65,7 @@ For every task, walk this list. Stop at the first hit.
 
 Step 6 has a tax: save the result to ~/.claude/patterns/.
 
-Details, tag vocabulary, search techniques → @${CLAUDE_SKILL_DIR}/../../playbooks/search.md
+Details, tag vocabulary, search techniques → @${CLAUDE_SKILL_DIR}/playbooks/search.md
 
 ## § 2 — Copy, don't rewrite
 
@@ -75,7 +75,7 @@ Preserve quirks — they are bug-fix scars.
 `cp existing.py new.py` → edit content → done.
 NOT "read it, get inspired, rewrite it better."
 
-Details and anti-patterns → @${CLAUDE_SKILL_DIR}/../../playbooks/copy.md
+Details and anti-patterns → @${CLAUDE_SKILL_DIR}/playbooks/copy.md
 
 ## § 3 — Tag everything for search
 
@@ -90,7 +90,7 @@ Tags: `PATTERN:` what · `USE WHEN:` when · `COPY THIS:` what to change · `dec
 Names are indexes. `render_kpi_card(label, value, delta)` is findable.
 `render_v2(d)` is not.
 
-Tag vocabulary and naming conventions → @${CLAUDE_SKILL_DIR}/../../playbooks/index.md
+Tag vocabulary and naming conventions → @${CLAUDE_SKILL_DIR}/playbooks/index.md
 
 ## § 4 — Touch only what the task requires
 
@@ -99,14 +99,14 @@ Tag vocabulary and naming conventions → @${CLAUDE_SKILL_DIR}/../../playbooks/i
 - Unrelated issue → document separately, don't fix
 - Every changed line traces to the task. If not, revert it
 
-Scope control details → @${CLAUDE_SKILL_DIR}/../../playbooks/scope.md
+Scope control details → @${CLAUDE_SKILL_DIR}/playbooks/scope.md
 
 ## § 5 — Write from scratch (rare)
 
 Minimum code. Today's problem only. No speculation.
 200 lines → 50. Then tag it. Then save to patterns/.
 
-Rules for original code → @${CLAUDE_SKILL_DIR}/../../playbooks/scratch.md
+Rules for original code → @${CLAUDE_SKILL_DIR}/playbooks/scratch.md
 
 ## § 6 — Self-review
 
@@ -120,7 +120,7 @@ Before committing, review your own diff:
 □  A reviewer can approve this in under 60 seconds
 ```
 
-Detailed checklist → @${CLAUDE_SKILL_DIR}/../../playbooks/review.md
+Detailed checklist → @${CLAUDE_SKILL_DIR}/playbooks/review.md
 
 ## § 7 — Commit and deliver
 
@@ -134,7 +134,7 @@ fix(chart): render company curve on quantile trend plot
 Pull requests: focused diff, no side-effects.
 The standard: approved while you are unreachable.
 
-Commit and PR conventions → @${CLAUDE_SKILL_DIR}/../../playbooks/commit.md
+Commit and PR conventions → @${CLAUDE_SKILL_DIR}/playbooks/commit.md
 
 ## § 8 — Collaboration
 
@@ -146,7 +146,7 @@ Commit and PR conventions → @${CLAUDE_SKILL_DIR}/../../playbooks/commit.md
 The standard: a colleague inherits your module, ships a feature,
 never opens a message to you.
 
-Collaboration standards → @${CLAUDE_SKILL_DIR}/../../playbooks/collab.md
+Collaboration standards → @${CLAUDE_SKILL_DIR}/playbooks/collab.md
 
 ---
 
