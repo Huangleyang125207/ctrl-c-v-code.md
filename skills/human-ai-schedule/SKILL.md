@@ -7,8 +7,10 @@ description: |
   coworker — even if the user only says "log this at 11:00" or
   "what did we say last Tuesday." Default behavior of dumping
   procedural details, paraphrasing voice into corporate prose, or
-  pre-padding empty time-blocks must defer to this skill — entries
-  must distill to result + significance, not step-by-step process.
+  fragmenting one task across multiple cells must defer to this
+  skill — entries distill to result + significance, and a cell is
+  removed only when its time falls inside a verified-active task's
+  span (never pre-merged on guess).
 
   TRIGGER when: user is in a file matching `daily/`, `journal/`,
   `schedule/`, `半小时复盘/`, or any file with H1 time-block headers
@@ -77,18 +79,24 @@ Decision tree details and forensics → @${CLAUDE_SKILL_DIR}/playbooks/locate.md
 
 ## § H2 — File skeleton (project-defined)
 
-Skeleton (filename, top checklist section) is project-defined in `SCHEDULE_TEMPLATE.md`. Universal invariants:
+Skeleton (filename, top checklist section, pre-padded time-block cadence) is project-defined in `SCHEDULE_TEMPLATE.md`. Universal invariants:
 
 ```
-□  Time-block (H1) marks the START of a NEW task — the cell IS the boundary signal
+□  Time-block (H1) marks a content-anchor point in the day
 □  Tag segments under a time-block are H2, prefixed `#`
 □  Single `---` between blocks
 □  Colon style (full-width / half) consistent file-wide — match what exists
-□  NEVER pre-pad empty time-blocks. Add a cell only when actual content goes in.
-□  Gap between filled cells means the prior task continued — not missing data.
+□  Pre-padded empty cells ARE placeholders — preserve them for unrecorded periods
+□  Delete a cell ONLY if it falls inside a verified-active task's span
+□  Verify span via JSONL timestamps OR user-stated duration. Never preemptively merge.
 ```
 
-If you cannot articulate what's different between this 30-min span and the previous one, do not create a new cell. Cells fragment when content fragments.
+Cell-merging rule (the only time you remove a cell):
+1. Task starts at cell `# H1：MM`
+2. Same task continues past `H1+1：MM` cell boundary (verified by timestamps)
+3. Delete the cells INSIDE the verified span. Keep the START cell. Keep the cells AFTER the span.
+
+If you cannot verify the span, leave all cells alone — empty cells are user's placeholders for later, not errors to clean up.
 
 ## § H3 — Tags (vocabulary project-defined, rules universal)
 
