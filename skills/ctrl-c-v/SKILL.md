@@ -1,9 +1,32 @@
 ---
 name: ctrl-c-v
 description: |
-  Copy-paste-first coding principles. Use for all coding tasks.
-  Activates automatically. Makes AI grep, copy, adapt, and ship
-  instead of writing from scratch.
+  Coding doctrine for any task that creates, modifies, or refactors
+  code in a programming language. Make sure to consult this skill
+  whenever the user is about to write, edit, debug, or ship code,
+  even if they don't explicitly ask for "best practices" — Claude's
+  default of generating new code from scratch produces code no one
+  can grep, copy, or ship next Friday, and this skill enforces a
+  copy-paste-first workflow that compounds into tomorrow's
+  shortcuts.
+  TRIGGER when: user asks to write/add/fix/implement code; request
+  mentions a function/class/module/component/endpoint/script; user
+  shares an error and asks to fix; user wants code review of a diff
+  or PR; file changes touch *.py *.ts *.tsx *.js *.jsx *.go *.rb
+  *.rs *.java *.kt *.swift *.cpp *.c *.h *.cs *.php *.lua *.sh;
+  user opens or enters a new project for the first time (no
+  CLAUDE.md present yet).
+  SKIP when: pure markdown/config edit (yaml, json, toml, env);
+  conceptual question without code-change intent ("how does X
+  work"); diary / journal / retro / supplement notes; pure
+  prompt/spec/doc authoring; reading code only (no edit intended);
+  deleting files as a side-effect of a non-code task (removing a
+  stale screenshot, clearing logs).
+  Examples that trigger: "implement login endpoint", "fix this
+  bug", "refactor the parser", "add a hook for X", first session
+  in an empty project.
+  Examples that skip: "explain what async means", "今天的复盘",
+  "write a README", "delete those old screenshots".
 ---
 
 # Ctrl+C Ctrl+V Code Skills
