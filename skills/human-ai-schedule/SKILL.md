@@ -6,9 +6,9 @@ description: |
   daily log, journal, retro, or coordination file shared with a
   coworker — even if the user only says "log this at 11:00" or
   "what did we say last Tuesday." Default behavior of dumping
-  content at the bottom of files or paraphrasing the user's voice
-  into corporate prose must defer to this skill, which enforces
-  four jobs: locate, format, commit, harness.
+  procedural details, paraphrasing voice into corporate prose, or
+  pre-padding empty time-blocks must defer to this skill — entries
+  must distill to result + significance, not step-by-step process.
 
   TRIGGER when: user is in a file matching `daily/`, `journal/`,
   `schedule/`, `半小时复盘/`, or any file with H1 time-block headers
@@ -77,15 +77,18 @@ Decision tree details and forensics → @${CLAUDE_SKILL_DIR}/playbooks/locate.md
 
 ## § H2 — File skeleton (project-defined)
 
-Skeleton (filename, granularity, top section) is project-defined in `SCHEDULE_TEMPLATE.md`. Universal invariants:
+Skeleton (filename, top checklist section) is project-defined in `SCHEDULE_TEMPLATE.md`. Universal invariants:
 
 ```
-□  Each time-block is an H1 header
+□  Time-block (H1) marks the START of a NEW task — the cell IS the boundary signal
 □  Tag segments under a time-block are H2, prefixed `#`
-□  Separator between time-blocks is a single `---`
+□  Single `---` between blocks
 □  Colon style (full-width / half) consistent file-wide — match what exists
-□  New day = copy template → empty blocks → no speculative entries
+□  NEVER pre-pad empty time-blocks. Add a cell only when actual content goes in.
+□  Gap between filled cells means the prior task continued — not missing data.
 ```
+
+If you cannot articulate what's different between this 30-min span and the previous one, do not create a new cell. Cells fragment when content fragments.
 
 ## § H3 — Tags (vocabulary project-defined, rules universal)
 
@@ -132,14 +135,25 @@ Do NOT write:
 
 Silence is the default.
 
-## § H5 — Voice (anti-AI-tone)
+## § H5 — Granularity & Voice
 
-Logs are diary, not corporate prose. User's voice — casual, specific, sometimes profane — survives.
+Each entry must answer two questions for a reader six months later:
 
 ```
-□  Bullet density low: 3 lines of prose > 5 bullets
-□  Verbs present: "标签格式统一了" not "标签管理体系完善"
-□  Cause / blocker / outcome shape, not flat outcome
+1. What changed — concretely, in the project / system / your understanding
+2. Why it matters — what does this enable, unblock, or clarify next
+```
+
+If neither answer is obvious, the entry is broken (overspecified procedure, or underspecified vibes). The journal is a decision-and-insight log, not a code log.
+
+**Drop**: tool names, function signatures, file paths, step-by-step procedure, error texts unless the error itself is the lesson.
+**Keep**: outcome, decision, insight, risk noticed (latter goes in #commit per § H4).
+
+Voice rules (after granularity is right):
+
+```
+□  Prose, not bullet piles (3 lines of prose > 5 bullets)
+□  Verbs that say what happened — not corporate "implementations completed"
 □  Profanity preserved if user used it
 ```
 
@@ -182,7 +196,7 @@ Schedule (chronological) and aggregation (by topic) are two views of same data. 
 | dictates timed past event | use stated time → convert relatives to absolute dates |
 | dictates past event, no time | ASK user (do not write yet) |
 | "go find day X" | § H6 forensics → confirm with user → write |
-| "make X concise" | three-paragraph form (cause / blocker / outcome), not bullets |
+| "make X concise" | distill to result + significance per § H5 — drop procedure, drop tool names |
 | `#协作` segment present | § H4 evaluation — write commit only if risk/dep/uncertainty |
 | project-tagged segment added | mirror to aggregation page same turn |
 

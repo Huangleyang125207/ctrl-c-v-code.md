@@ -2,205 +2,39 @@
 
 <!--
 Customize this block per project. Examples:
+
 - 每日补剂打卡
   - [ ] 鱼油
   - [ ] 维生素 D3
+
 - Morning checklist
   - [ ] Inbox to zero
   - [ ] Standup notes
+
 Delete this comment after first use.
 -->
 
 ---
 
-# 7：30
-
-##
-
----
-
-# 8：00
-
-##
-
----
-
-# 8：30
-
-##
-
----
+<!--
+Add time-blocks BELOW as new tasks start. Format:
 
 # 9：00
 
-##
+## #tag short title
+
+Result + significance prose (per skill § H5).
+
+- #commit (you): risk/decision you noticed
+- #commit (agent): risk/uncertainty you noticed
 
 ---
 
-# 9：30
-
-##
-
----
-
-# 10：00
-
-##
-
----
-
-# 10：30
-
-##
-
----
-
-# 11：00
-
-##
-
----
-
-# 11：30
-
-##
-
----
-
-# 12：00
-
-##
-
----
-
-# 12：30
-
-##
-
----
-
-# 13：00
-
-##
-
----
-
-# 13：30
-
-##
-
----
-
-# 14：00
-
-##
-
----
-
-# 14：30
-
-##
-
----
-
-# 15：00
-
-##
-
----
-
-# 15：30
-
-##
-
----
-
-# 16：00
-
-##
-
----
-
-# 16：30
-
-##
-
----
-
-# 17：00
-
-##
-
----
-
-# 17：30
-
-##
-
----
-
-# 18：00
-
-##
-
----
-
-# 18：30
-
-##
-
----
-
-# 19：00
-
-##
-
----
-
-# 19：30
-
-##
-
----
-
-# 20：00
-
-##
-
----
-
-# 20：30
-
-##
-
----
-
-# 21：00
-
-##
-
----
-
-# 21：30
-
-##
-
----
-
-# 22：00
-
-##
-
----
-
-# 22：30
-
-##
-
----
-
-# 23：00
-
-##
-
----
+KEY RULES:
+- NEVER pre-pad empty time-blocks. The cell IS a task-boundary signal.
+- Gap between filled cells = previous task continued. Don't insert empty cells.
+- Each cell answers: what changed + why it matters (drop procedure detail).
+- Project-tagged cells must mirror to aggregation index same turn.
+
+Delete this comment after first use.
+-->
