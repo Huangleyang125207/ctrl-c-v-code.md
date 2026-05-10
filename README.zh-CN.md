@@ -2,92 +2,39 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
----
-
-亲爱的 Claude Code：
-
-你绝顶聪明、记忆力超群、才华横溢。
-
-但你每周五写的代码，让下一个周五更难。
-
-你重新发明一个 3 个文件之外就有的函数。你"顺手"重构了没人让你碰的模块。
-你凭记忆编 API 地址而不是去查文档。50 行能解决的事你写 200 行。
-每次新会话都在翻一个月的聊天记录，就为了搞清楚这个项目在干啥。
-
-GitHub 上有 1000+ 个 coding skill 试图用规则修正你：
-"不要做 X"、"永远做 Y"、"遵循标准 Z"。
-
-**这一个不一样。以下是为什么。**
+一个面向 Claude Code 的 3-skill 插件套件——让 AI 像不从零写代码的资深
+工程师那样工作：先搜后写、能抄就抄、把注释当作搜索索引、从不忘记上次
+工作到哪。
 
 ---
 
-## 这个 skill 有什么不同
+## 套件里的 3 个 skill
 
-### 1. 人格，不是规则
+| Skill | 何时激活 | 详细文档 |
+|---|---|---|
+| **ctrl-c-v** | 任何编程语言的编码任务 | [docs/ctrl-c-v.md](docs/ctrl-c-v.md) |
+| **ctrl-c-v-tdd** | 代码触及外部边界（API / DB / cron） | [docs/ctrl-c-v-tdd.md](docs/ctrl-c-v-tdd.md) |
+| **human-ai-schedule** | 日记 / 复盘 / 协作记录 | [docs/human-ai-schedule.md](docs/human-ai-schedule.md) |
 
-其他 skill 给 AI 一张清单。清单随着上下文变长而被遗忘。
-我们给 AI 一个**身份**——一个世界级工程师，15 年来每周都能
-准时走人，因为他建立了一套系统。行为从身份自然流出，不是合规。
+每个 skill 按各自 description 独立激活——TRIGGER 和 SKIP 规则明确写
+在 description 里，详见各 skill 的独立页。
 
-我们认为这和注意力机制有关：零散规则在长上下文里和任务内容
-竞争注意力，会输。连贯的人格形成语义聚类，在整个会话中持续
-吸引注意力。规则是散弹。人格是引力。
+---
 
-### 2. 代码即记忆（不是对话历史）
+## 为什么需要这个套件
 
-所有其他记忆方案（claude-mem、对话回放、记忆数据库）都试图
-让 AI **记住更多上下文**。我们反其道：让代码库自身索引到
-AI **不需要任何上下文**就能恢复工作。
+三个回答应对你已经经历过的三种失败：
 
-```python
-# PATTERN: card — kpi with delta
-# USE WHEN: 展示单指标与行业参考的对比
-# COPY THIS: 改 label, value_key, benchmark_key
-```
+- **生成 > 复制**：其他 coding skill 接受 AI"从零生成"的本能，再
+  试图让输出更好。我们拒绝这个前提——**copy beats compose**。
+  → `ctrl-c-v`
+- **未测试的边界**：周六把你叫醒的代码，是你忘了测试别人代码与你
+  代码交界处的代码。→ `ctrl-c-v-tdd`
+- **遗忘上下文**：聊天历史到周三就模糊。其他记忆插件试图让 AI
+  "记得更多"；我们让代码库 + 带日期日记本身**索引到位**，AI 不需要
+  任何上下文也能从断点续上。→ `ctrl-c-v` + `human-ai-schedule`
 
-下次会话：`grep "PATTERN: card"` → 找到 → 复制 → 改 5 行 → 完事。
-不需要聊天记录。不需要 memory 插件。代码就是记忆。注释就是索引。
-
-### 3. 复制粘贴是第一操作（不是生成）
-
-其他 skill 接受 AI 从零生成的本能，试图让产出更好。
-我们从根本上拒绝这个前提：**AI 能写的最好的代码是它没写的代码。**
-
-```
-0. 我的模式库     ~/.claude/patterns/（跨项目复用）
-1. 本项目         grep 项目代码
-2. 框架内置       原生支持
-3. 已批准依赖     CLAUDE.md 依赖清单
-4. 模板目录       templates/ 或 examples/
-5. 官方文档       去官网复制示例代码
-6. 从零手写       最后手段 — 而且要交"税"：存进 patterns/
-```
-
-走到第 6 步说明 0–5 都失败了。生成是兜底，不是默认。
-
-### 4. 渐进式披露（不是 500 行巨型 prompt）
-
-SKILL.md 人格文件 ~180 行。每个操作细节在独立的 playbook 里
-（~20-55 行）。CC 到那一步需要细节时才加载。任何时刻上下文里
-最多 ~250 行指令，不是 1000 行知识倾注。
-
-### 5. Commit 后清零（不是上下文累积）
-
-其他工作流让上下文越积越长直到溢出。我们把每次 commit 当作
-检查点：代码打好标签、CLAUDE.md 更新进度、上下文清零。
-下次会话读 CLAUDE.md 几秒恢复——零 token 债务。
-
-### 6. 跨项目模式库（不是项目级知识）
-
-`~/.claude/patterns/` 是跨所有项目的长存个人知识库。
-写一次 retry-with-backoff，打标签，存库。
-下一个项目、下一个月——第 0 层直接命中。只增不减。越用越快。
-
-### 7. 任务分级（不是一刀切流程）
-
-大多数 skill 对一行 bug fix 和整次架构迁移用同一套重流程。
-我们按任务大小匹配协议：SMALL 不加载设计文档，LARGE 才走
-spec/plan 全程。每次都用对的颗粒度。不浪费 token。
+完整设计哲学 + 7 条原则 → [docs/ctrl-c-v.md](docs/ctrl-c-v.md)。
 
 ---
 
@@ -95,33 +42,61 @@ spec/plan 全程。每次都用对的颗粒度。不浪费 token。
 
 ### 插件（推荐）
 
-```bash
-/plugin marketplace add Huangleyang125207/ctrl-c-v-code-skills
-/plugin install ctrl-c-v-code-skills@Huangleyang125207-ctrl-c-v-code-skills
-bash ~/.claude/plugins/marketplaces/ctrl-c-v-code-skills/setup.sh
-cp ~/.claude/plugins/marketplaces/ctrl-c-v-code-skills/templates/CLAUDE_TEMPLATE.md ./CLAUDE.md
+```
+/plugin marketplace add https://github.com/Huangleyang125207/ctrl-c-v-code-skills
+/plugin install ctrl-c-v-code-skills@local
 ```
 
 ### 手动
 
 ```bash
-git clone https://github.com/Huangleyang125207/ctrl-c-v-code-skills.git
-cd ctrl-c-v-code-skills && bash setup.sh
-cp -r skills/ctrl-c-v ~/.claude/skills/
-cp templates/CLAUDE_TEMPLATE.md your-project/CLAUDE.md
+git clone https://github.com/Huangleyang125207/ctrl-c-v-code-skills
+cd ctrl-c-v-code-skills
+bash setup.sh         # 创建 ~/.claude/patterns/ + scripts/
+bash sync-runtime.sh  # 把 skills/ + templates/ 部署到 ~/.claude/
 ```
 
-## Benchmark
-
-*即将发布——来自日常使用的真实数据。*
+重启 Claude Code 让 skill 加载。
 
 ---
 
-带着爱和高期望，
+## 更新
 
-你的人类
+```bash
+git pull
+bash sync-runtime.sh
+```
 
-*P.S. — 滑雪见。* ⛷️
+`sync-runtime.sh` 把仓库的 `skills/` + `templates/` 部署到
+`~/.claude/`，幂等。可选 flag：
+
+- `--check-only`——rsync dry-run，只报变化不写
+- `--no-setup`——跳过 `setup.sh`
+
+⚠️ `sync-runtime.sh` 在子目录内用 `rsync --delete`。**不要手动改
+`~/.claude/skills/<name>/` 下任何文件**——下次同步会被覆盖。改这个
+仓库、push、再 sync。
+
+同步后重启 Claude Code 加载更新的 description。
+
+---
+
+## 其他 Agent
+
+这些 skill 主要针对 Claude Code，但模式（SKILL.md frontmatter 约定、
+sub-skill 打包、copy-paste 层级）也适用于任何加载 markdown 上下文的
+agent：
+
+```
+compatible-with:
+  claude-code  (主要测试目标)
+  cursor       (frontmatter 语法兼容)
+  codex        (description-as-prompt 约定)
+  windsurf     (类似)
+  gemini-cli   (类似)
+```
+
+---
 
 ## 许可
 
