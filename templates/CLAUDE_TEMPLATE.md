@@ -23,6 +23,7 @@ Update this list after every commit.
 | Charts / visualization | @charts/ file headers |
 | API / third-party integration | @docs/api-endpoints.md |
 | Dependencies / what's approved | @docs/approved-deps.md |
+| 项目氛围 / 阶段 / 当下气压 | @PULSE.md |
 
 Do not load references preemptively. Load when the task touches that area.
 
