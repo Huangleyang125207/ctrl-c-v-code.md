@@ -85,7 +85,7 @@ The user didn't ask for less voice. They asked for less noise.
 
 ❌ Before:
 ```
-## #配置系统 #协作 TDD 反训练锚 + skill-creator 官方规则深读
+## #projectA #collab TDD 反训练锚 + skill-creator 官方规则深读
 
 TDD 描述继续磨——指出 "Tests are copyable from..." 只是位置说明
 不是行为指令，要补 bias override 跟 ctrl-c-v 的 "copy beats
@@ -98,7 +98,7 @@ queries 必须真实带 backstory 等。重写两段——TDD 那段嵌入
 
 ✅ After:
 ```
-## #配置系统 #协作 学会 skill description 写法
+## #projectA #collab 学会 skill description 写法
 
 之前以为 description 就是个简介，今天搞清楚它是 skill 唯一的
 触发入口，写不好根本不激活。建立了"pushy 语气 + 反训练锚 +

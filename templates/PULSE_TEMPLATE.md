@@ -18,10 +18,14 @@ Status emoji legend:
 🔵 shipped / closed
 
 ## 心跳
-- Deployment: <where it runs / not deployed>
-- Legal/compliance: <filings, deadlines, audit state>
-- Money: <costs / revenue / runway>
-- Users: <count + character — 0 / 内测 / 公测 / 付费>
+<!-- Pick the dimensions that matter for THIS project. Drop the rest.
+     Add new ones if your project has signals these don't capture
+     (e.g. Citations / Stars / Subscribers / Hardware-cost / Energy-budget).
+     The point is: a stranger should learn the live pressure, not fill a form. -->
+- Deployment: <where it runs / not deployed>           <!-- skip for libraries, papers, hobby code -->
+- Legal/compliance: <filings, deadlines, audit state>  <!-- skip if no regulatory surface -->
+- Money: <costs / revenue / runway>                    <!-- skip for OSS, academic, no-spend side projects -->
+- Users: <count + character — 0 / private beta / paid> <!-- skip if no users by design (research, infra) -->
 - Cadence: <how often things ship>
 
 ## 当下气压

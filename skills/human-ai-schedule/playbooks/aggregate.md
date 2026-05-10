@@ -22,8 +22,8 @@ Plain (no sub-tags):
 
 | Date | Time | Link | Content |
 |------|------|------|---------|
-| 5.7  | 9：30 | [26.5.7#9：30](daily/26.5.7.md#9：30) | ICP 备案后续 |
-| 5.8  | 14：00 | [26.5.8#14：00](daily/26.5.8.md#14：00) | yanpai 域名迁移 dry run |
+| 5.7  | 9：30 | [26.5.7#9：30](daily/26.5.7.md#9：30) | regulatory filing follow-up |
+| 5.8  | 14：00 | [26.5.8#14：00](daily/26.5.8.md#14：00) | DNS migration dry run |
 ```
 
 With sub-tags — add a 5th `Sub` column:
@@ -31,9 +31,9 @@ With sub-tags — add a 5th `Sub` column:
 ```markdown
 | Date | Time | Link | Content | Sub |
 |------|------|------|---------|-----|
-| 5.9  | 9：30 | [...] | 学会 skill description 写法 | /ctrl-c-v |
-| 5.9  | 16：30 | [...] | 半小时复盘协议自身 skill 化 | /schedule |
-| 5.9  | 15：00 | [...] | 三层职责对齐（跨 skill 元决策） | — |
+| 5.9  | 9：30 | [...] | learned how to write activating descriptions | /skill-A |
+| 5.9  | 16：30 | [...] | converted retro protocol into a skill | /skill-B |
+| 5.9  | 15：00 | [...] | aligned responsibilities across skills (meta) | — |
 ```
 
 Columns:
@@ -65,8 +65,8 @@ Triggers:
 
 ## When NOT to add
 
-- Generic tags (`#exercise`, `#leisure`, `#饮食`, `#exercise/walk`) do not get aggregated. Only project-named tags (and their sub-tags).
-- `#协作` alone is not enough — must stack with a project tag.
+- Generic tags (`#exercise`, `#leisure`, `#diet`, `#exercise/walk`) do not get aggregated. Only project-named tags (and their sub-tags).
+- A meta tag like `#collab` alone is not enough — must stack with a project tag.
 
 ## Dry-run check
 
