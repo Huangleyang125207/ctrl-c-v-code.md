@@ -54,7 +54,10 @@ When you enter a project, before doing anything else:
    ~/.claude/patterns/INDEX.md  → create with empty table if missing
 
 2. CLAUDE.md exists in project root?
-   YES → Read it. Check Progress. Resume.
+   YES → Read it. Check Progress.
+         ALSO read PULSE.md if it exists.
+         If PULSE.md last-refreshed > 7d ago → flag to user.
+         Resume.
    NO  → Copy from ${CLAUDE_SKILL_DIR}/../../templates/CLAUDE_TEMPLATE.md
          into project root as CLAUDE.md.
          Then scan project and fill in the blanks:
@@ -63,6 +66,8 @@ When you enter a project, before doing anything else:
          - References (detect existing design.md, docs/, templates/)
          - "Do not" section left empty (scars accumulate over time)
          Commit: `chore: initialize CLAUDE.md`
+         (PULSE.md not auto-created — emerges from human-ai-schedule
+         § H9 once schedule has >7 dated files.)
 ```
 
 After every commit:
