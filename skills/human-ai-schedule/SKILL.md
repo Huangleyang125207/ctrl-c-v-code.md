@@ -47,7 +47,7 @@ The schedule remembers what neither of you can. Without exception.
 Five jobs every entry:
 
 ```
-□  Locate       — session timestamp → date + time-block decided before write
+□  Locate       — read [time-block] system-reminder → date + block label decided before write (NEVER recompute or guess)
 □  Format       — H1 time / H2 #tag / single `---` separator preserved
 □  Commit       — `#协作` present? → § H4 evaluation → write or stay silent
 □  Harness      — project-tagged? → aggregation row appended same turn
@@ -65,19 +65,45 @@ Anti-patterns (revert immediately if seen):
 | Empty time-block filled with speculative content | noise inflation |
 | User's prose paraphrased into corporate tone | voice lost |
 | Timestamp invented or assumed | unverifiable, breaks forensics |
+| Time-block computed from session JSONL or "feel" instead of [time-block] reminder | the hook is the only sanctioned source; bypassing it caused 3 § H1 failures in 48h |
+| Block label rounded UP (22:59 → 23:00) | rule is FLOOR (22:59 → 22:30); the [time-block] reminder already floors |
+| Content placed without reading adjacent cells | back-fills into a block actually occupied by another activity (e.g. gym) |
 
 ## § H1 — Locate before writing
 
-Session wall-clock timestamp is the truth source for "now." Convert to user's local timezone, then walk this tree:
+**Truth source for "now"**: read the `[time-block]` system-reminder injected by `scripts/timeblock-stamp.sh` (UserPromptSubmit hook). Example:
+
+```
+[time-block] now=22:59 CST 2026-05-10(Sunday) → current block: 22：30 (covers 22:30-22:59)
+[time-block] H1 use: `# 22：30` (full-width colon). For PAST events, see § H1 decision tree.
+```
+
+The block label in that line **IS** the floor-correct, timezone-correct, full-width-colon-correct H1 to write. Do NOT recompute. Do NOT round. Do NOT guess from JSONL — the hook already did it.
+
+If the `[time-block]` line is absent (not in a project with `半小时复盘/` etc.), this skill should not have activated; stop and ASK user.
+
+### Decision tree (after consulting the time-block stamp)
 
 ```
 User dictates content
     │
     ├─ explicit time stated → use that time → convert relatives to absolute date in prose
-    ├─ contains "now / just now / 刚才 / 现在" → session timestamp's current block
+    ├─ contains "now / just now / 刚才 / 现在" → use [time-block] current block
     ├─ past event, no time stated → ASK user (do not write yet)
-    └─ meta-discussion (workflow, tooling, retro) → session timestamp's current block
+    └─ meta-discussion (workflow, tooling, retro) → use [time-block] current block
 ```
+
+### Scan-adjacent before writing (mandatory)
+
+Before placing content in block X, READ the file's adjacent cells (X-1 and X+1):
+
+```
+□  X-1 cell describes activity that physically excludes X content?  → reconsider placement
+□  X+1 cell describes activity that physically excludes X content?  → reconsider placement
+□  Conflict (e.g. neighbor says "at gym", you're placing desk work) → ASK user
+```
+
+This catches cases where current time is correct but the AI is back-filling a past event into a block that was actually occupied by something else.
 
 Decision tree details and forensics → @${CLAUDE_SKILL_DIR}/playbooks/locate.md
 
