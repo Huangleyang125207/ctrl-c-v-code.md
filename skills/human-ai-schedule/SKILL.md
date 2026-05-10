@@ -83,7 +83,11 @@ Decision tree details and forensics → @${CLAUDE_SKILL_DIR}/playbooks/locate.md
 
 ## § H2 — File skeleton (project-defined)
 
-**Format conventions** (H1 syntax, full-width colon, separator, tag prefix, etc.) live as inline comments in `SCHEDULE_TEMPLATE.md`. Single source of truth — read there when editing the format itself.
+**Format conventions** (H1 syntax, full-width colon, separator, tag prefix, etc.) live as inline comments in @${CLAUDE_SKILL_DIR}/templates/SCHEDULE_TEMPLATE.md. Single source of truth — read there when editing the format itself.
+
+**Creating a new daily file**: copy @${CLAUDE_SKILL_DIR}/templates/SCHEDULE_TEMPLATE.md to the project's daily-log directory, rename to date stem (e.g. `26.5.10.md` or `2026-05-10.md` per project convention), keep all empty time-blocks as user placeholders.
+
+**Customizing the top section**: the top of the template is intentionally a free slot — put per-project rituals there (supplement checklist / morning standup / daily commitments). Edit the template once for project-wide defaults, or override per-day by editing the daily file directly. The format-conventions comment block can stay or be deleted; it's reference, not required content.
 
 **Semantic invariants** (these stay here — govern when cells are written/deleted, not how cells look):
 
@@ -100,9 +104,11 @@ Cell-merging rule (the only time you remove a cell):
 
 If you cannot verify the span, leave all cells alone.
 
+Customizing the template (top section, time grid, etc.) → @${CLAUDE_SKILL_DIR}/playbooks/diy.md
+
 ## § H3 — Tags (vocabulary project-defined, rules universal)
 
-Vocabulary lives in `SCHEDULE_TEMPLATE.md`. Universal rules:
+Vocabulary is project-defined — list active tags in the project's `CLAUDE.md` so AI knows which segments need aggregation-page mirroring. Universal rules:
 
 ```
 □  Multiple tags per block allowed: `## #exercise #leisure`
@@ -211,7 +217,7 @@ Schedule (chronological) and aggregation (by topic) are two views of same data. 
 
 | User says / does | Agent does |
 |---|---|
-| "create today's" / "创建今天的" | verify session date → copy template → empty time-blocks |
+| "create today's" / "创建今天的" | verify session date → copy @${CLAUDE_SKILL_DIR}/templates/SCHEDULE_TEMPLATE.md → rename to date stem → preserve empty time-blocks |
 | "format this md" | normalize separators, tag levels, spacing — do NOT rewrite prose |
 | dictates current event | session timestamp's current block → write |
 | dictates timed past event | use stated time → convert relatives to absolute dates |
