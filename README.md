@@ -141,7 +141,8 @@ ctrl-c-v-code-skills/
 │           ├── commit.md          commit/PR conventions
 │           └── collab.md          collaboration standards
 ├── templates/
-│   └── CLAUDE_TEMPLATE.md       Project autopilot (user copies manually)
+│   ├── CLAUDE_TEMPLATE.md       Project autopilot (user copies manually)
+│   └── PULSE_TEMPLATE.md        Project vibe snapshot (refreshed weekly)
 ├── setup.sh                     Creates ~/.claude/patterns/ structure
 └── README.md
 ```
