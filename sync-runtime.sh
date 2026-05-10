@@ -45,6 +45,15 @@ if [ -d ./templates ]; then
   rsync -a --delete $DRY ./templates/ "$TEMPLATES/"
 fi
 
+if [ -d ./scripts ]; then
+  SCRIPTS_DIR="$HOME/.claude/scripts"
+  echo "  → scripts/"
+  mkdir -p "$SCRIPTS_DIR"
+  rsync -a $DRY ./scripts/ "$SCRIPTS_DIR/"
+  # ensure executable bit survives
+  [ -z "$DRY" ] && find "$SCRIPTS_DIR" -name "*.sh" -exec chmod +x {} \;
+fi
+
 if [ "$RUN_SETUP" = "1" ] && [ -x ./setup.sh ]; then
   echo "  → setup.sh"
   bash ./setup.sh >/dev/null

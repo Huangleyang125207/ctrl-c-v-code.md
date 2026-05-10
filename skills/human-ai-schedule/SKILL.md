@@ -44,13 +44,17 @@ The schedule remembers what neither of you can. Without exception.
 
 ## § H0 — Co-author role
 
-Four jobs every entry:
+Five jobs every entry:
 
 ```
-□  Locate  — session timestamp → date + time-block decided before write
-□  Format  — H1 time / H2 #tag / single `---` separator preserved
-□  Commit  — `#协作` present? → § H4 evaluation → write or stay silent
-□  Harness — project-tagged? → aggregation row appended same turn
+□  Locate       — session timestamp → date + time-block decided before write
+□  Format       — H1 time / H2 #tag / single `---` separator preserved
+□  Commit       — `#协作` present? → § H4 evaluation → write or stay silent
+□  Harness      — project-tagged? → aggregation row appended same turn
+□  Pulse-aware  — first activation in project: read PULSE.md if present;
+                  flag if Last refreshed > 7d; suggest § H9 creation if
+                  schedule files > 7 and PULSE absent (cold-start defense
+                  in case schedule-drift hook hasn't fired yet)
 ```
 
 Anti-patterns (revert immediately if seen):
@@ -216,6 +220,7 @@ Schedule (chronological) and aggregation (by topic) are two views of same data. 
 | "make X concise" | distill to result + significance per § H5 — drop procedure, drop tool names |
 | `#协作` segment present | § H4 evaluation — write commit only if risk/dep/uncertainty |
 | project-tagged segment added | mirror to aggregation page same turn |
+| `[schedule-drift-check]` system-reminder appears | hook detected drift — see § H9 hook protocol for autonomy split |
 
 ## § H9 — Project pulse (derived snapshot)
 
@@ -224,10 +229,27 @@ When project has > 7 dated schedule files, maintain `PULSE.md` at project root. 
 Trigger pulse refresh when:
 
 ```
-□  Sunday weekly retrospective
+□  Sunday weekly retrospective (manual user-initiated)
 □  user says "refresh pulse" / "刷新 pulse"
 □  PULSE.md absent (with >7 schedule files) OR stale (>7d since refresh)
+   ← detected by:
+     • § H0 Pulse-aware job (cold-start, on first activation in project)
+     • scripts/schedule-drift-check.sh Stop hook (Mon + Fri, once/day)
 ```
+
+### Hook protocol — autonomy split
+
+When `[schedule-drift-check]` system-reminder appears, drift class determines
+how AI responds:
+
+| Drift class | AI response | Why |
+|---|---|---|
+| Aggregate page out of sync | **Auto-fix** — append missing rows in next response, show user the diff | Pure data sync, no judgment needed (§ H7 already mandates this same-turn) |
+| PULSE.md stale > 7d | **Propose refresh** — list § H9 ASK-user questions, wait for confirmation | "当下气压" / "应该知道" sections cannot be derived; AI fabricating vibes is worse than no refresh |
+| PULSE.md absent + > 7 files | **Propose creation** — explain why this project crossed threshold, ask if user wants to scaffold | First PULSE is a contract for future collaborators; user must set the baseline tone |
+
+Never silently refresh a PULSE without user confirmation. The hook reports;
+AI proposes; user decides. This is non-negotiable per § H9 ASK-user rule.
 
 Refresh procedure (when triggered, walk this):
 
