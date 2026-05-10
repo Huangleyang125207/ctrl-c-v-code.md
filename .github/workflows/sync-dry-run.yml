@@ -1,0 +1,13 @@
+name: sync-runtime dry-run
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bash syntax check
+        run: bash -n sync-runtime.sh
+      - name: Dry-run deploy
+        run: bash sync-runtime.sh --check-only --no-setup
