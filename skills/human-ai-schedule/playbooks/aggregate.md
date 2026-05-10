@@ -15,6 +15,8 @@ Three timelines, cross-checked, are more reliable than any one.
 
 ## Table format
 
+Plain (no sub-tags):
+
 ```markdown
 # Tag Aggregation
 
@@ -24,11 +26,22 @@ Three timelines, cross-checked, are more reliable than any one.
 | 5.8  | 14：00 | [26.5.8#14：00](daily/26.5.8.md#14：00) | yanpai 域名迁移 dry run |
 ```
 
+With sub-tags — add a 5th `Sub` column:
+
+```markdown
+| Date | Time | Link | Content | Sub |
+|------|------|------|---------|-----|
+| 5.9  | 9：30 | [...] | 学会 skill description 写法 | /ctrl-c-v |
+| 5.9  | 16：30 | [...] | 半小时复盘协议自身 skill 化 | /schedule |
+| 5.9  | 15：00 | [...] | 三层职责对齐（跨 skill 元决策） | — |
+```
+
 Columns:
 - **Date**: short form `M.D` (or full `YYYY-MM-DD` per project convention)
 - **Time**: must match the source H1 EXACTLY — full-width colon if source uses full-width
 - **Link**: markdown link to `file#time-anchor`
 - **Content**: one short phrase. Not a summary. The phrase should let user recall the entry without clicking.
+- **Sub** (optional): the sub-tag suffix (`/skill-A`) or `—` for parent-only entries
 
 ## Write-back rules
 
@@ -48,10 +61,11 @@ Triggers:
 - New project-tagged paragraph appears in a daily log → add row
 - Existing entry's tag changed → update existing row, do not duplicate
 - Existing entry deleted from daily log → remove row from aggregation
+- **Sub-tag entry (`#parent/child`) → add row to PARENT's table**, fill the Sub column
 
 ## When NOT to add
 
-- Generic tags (`#exercise`, `#leisure`, `#饮食`) do not get aggregated. Only project-named tags.
+- Generic tags (`#exercise`, `#leisure`, `#饮食`, `#exercise/walk`) do not get aggregated. Only project-named tags (and their sub-tags).
 - `#协作` alone is not enough — must stack with a project tag.
 
 ## Dry-run check

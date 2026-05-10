@@ -110,6 +110,17 @@ Vocabulary lives in `SCHEDULE_TEMPLATE.md`. Universal rules:
 □  New project tag → register in aggregation page first → then use
 ```
 
+Sub-tags: `#parent/child` syntax (Obsidian-native), max 2 levels — no `#a/b/c` three-deep.
+
+```
+□  Sub-tag preferred over parent when category is determined
+   (`#exercise/walk`, not bare `#exercise`)
+□  Parent without sub OK for cross-sub meta-discussion
+   (`#config-system` for cross-skill arch; `#config-system/skill-A` for that skill specifically)
+□  Sub-tag entries roll up to parent on aggregation page
+□  Add a new sub-tag to dictionary only when 3+ siblings appear naturally
+```
+
 Aggregation mechanics → @${CLAUDE_SKILL_DIR}/playbooks/aggregate.md
 
 ## § H4 — Dual-signature commits
