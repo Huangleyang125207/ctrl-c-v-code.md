@@ -228,13 +228,15 @@ Trigger pulse refresh when:
 ```
 □  Sunday weekly retrospective
 □  user says "refresh pulse" / "刷新 pulse"
-□  PULSE.md missing AND schedule has > 7 dated files (offer to create)
-□  PULSE.md exists AND last-refreshed > 7 days (warn, suggest refresh)
+□  PULSE.md absent (with >7 schedule files) OR stale (>7d since refresh)
 ```
 
 Refresh procedure (when triggered, walk this):
 
 ```
+0. AUDIT aggregate page (per § H7): scan past 7 days schedule for
+   #project-tag entries → backfill ALL missing rows BEFORE step 1.
+   Pulse depends on accurate aggregate; never skip.
 1. Read templates/PULSE_TEMPLATE.md (the 9-section skeleton)
 2. Derive each section from sources:
    - 一句话 / Stage      → CLAUDE.md first line + git tags
