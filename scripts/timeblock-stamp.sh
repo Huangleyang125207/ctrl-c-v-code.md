@@ -52,6 +52,7 @@ H_LABEL=$(echo "$H" | sed 's/^0//')
 cat <<EOF
 [time-block] now=${H}:${M} ${TZ_NAME} ${DATE}(${DOW}) → current block: ${H_LABEL}：${FLOOR_M_STR} (covers ${H}:${FLOOR_M_STR}-${H}:${END_M_STR})
 [time-block] H1 use: \`# ${H_LABEL}：${FLOOR_M_STR}\` (full-width colon). For PAST events, see § H1 decision tree.
+[skill-required] human-ai-schedule — schedule dir detected. Invoke via Skill tool before any journal/aggregate edit. Bypassing = bypassed § H1/§ H5 enforcement.
 EOF
 
 exit 0
